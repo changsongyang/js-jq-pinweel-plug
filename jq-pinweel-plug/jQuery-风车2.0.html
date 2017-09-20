@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>风车2.0</title>
+	<style>
+		*{margin:0;padding:0}
+		html,body{width:100%;height:100%;}
+		#fc-con{
+			width:800px;height:600px;
+			position:absolute;margin:auto;
+			left:0;right:0;top:0;bottom:0;
+			background-size:100% 100%;
+			background-position:50% 50%;
+			animation-duration:0.8s;
+			animation-fill-mode:forwards;
+			animation-timing-function:ease;
+			font-size:0;
+		}
+		@keyframes show{
+			from{background-size:400% 400%;}
+			to{background-size:100% 100%;}
+		}
+		#fc-con>span{
+			position:absolute;top:50%;
+			width:10%;height:80px;
+			line-height:80px;
+			text-align:center;
+			transition:all 0.3s ease;
+			transform:translateY(-50%) rotateX(0deg);
+			color:white;font-weight:bolder;
+			font-size:60px;
+			z-index:10000;
+			cursor:pointer;
+		}
+		#fc-con>span:hover{
+			color:#ccc;
+			transform:translateY(-50%) rotateX(30deg);
+		}
+		#fc-con>span.fc-left{left:50px;}
+		#fc-con>span.fc-right{right:50px;}
+		/*part部分*/
+		.fc-part{
+			width:50%;height:50%;
+			display:inline-block;
+			background-size:200% 200%;
+			background-repeat: no-repeat;
+		}
+	</style>
+	<script src='jquery.min.js'></script>
+	<script>
+		var curIndex=1;
+		var picPaths=[
+			"images2/pic1.jpg",
+			"images2/pic2.jpg",
+			"images2/pic3.jpg",
+			"images2/pic4.jpg"
+		];
+		function P(x,y,flag){
+			this['backgroundPosition-x']=x+'%';
+			this['backgroundPosition-y']=y+'%';
+		}
+		var POSITION={
+			PART1:{BEGIN:new P(0,0),END:new P(0,-100)},
+			PART2:{BEGIN:new P(100,0),END:new P(200,0)},
+			PART3:{BEGIN:new P(0,100),END:new P(-100,100)},
+			PART4:{BEGIN:new P(100,100),END:new P(100,200)}
+		};
+		$(function(){
+			$('#fc-con').css('background-image',
+				'url('+picPaths[curIndex-1]+')');
+			$('#fc-con>span').on('click',function(){
+				if($('#fc-con').css('animationName')=='show')
+					return;//防止连续快速点击
+				//退场动画
+				$(this).siblings('.fc-part').css({
+					'backgroundImage':'url('+picPaths[curIndex-1]+')'
+				}).each(function(i,v){
+					$(v).css(POSITION['PART'+(i+1)].BEGIN)
+					.animate(POSITION['PART'+(i+1)].END,800);
+				});
+				//进场动画
+				curIndex=curIndex+1>picPaths.length?1:curIndex+1;
+				$(this).parent().css({
+					'backgroundImage':'url('+picPaths[curIndex-1]+')',
+					'animationName':'show'
+				});
+				setTimeout(function(){
+					$('#fc-con').css({'animationName':''});
+				},900);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id='fc-con'>
+		<div class='fc-part fc-part1'></div>
+		<div class='fc-part fc-part2'></div>
+		<div class='fc-part fc-part3'></div>
+		<div class='fc-part fc-part4'></div>
+		<span class='fc-left'>&lt;</span>
+		<span class='fc-right'>&gt;</span>
+	</div>
+</body>
+</html>
