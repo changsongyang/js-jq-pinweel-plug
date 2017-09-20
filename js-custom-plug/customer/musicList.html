@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动物信息列表</title>
+	<link rel="stylesheet" href="../productor/grid.css">
+</head>
+<body>
+	<div id='con'></div>
+	<script src='../productor/grid.js'></script>
+	<script>
+		//1.我要显示集合数据
+		var data=[
+			{id:'001',name:'大象',type:'哺乳',weight:'1T'},
+			{id:'002',name:'老虎',type:'哺乳',weight:'200KG'},
+			{id:'003',name:'熊猫',type:'哺乳',weight:'300KG'}
+		];
+		function delAnimal(id){
+			for(var i=0;i<=data.length;i++){
+				if(data[i].id==id){
+					data.splice(i,1);
+					return;
+				}
+			}
+		}
+		function addAnimal(animal){
+			data.push(animal);
+		}
+		function updateAnimal(animal){
+			for(var i in data){
+				if(animal.id==data[i].id){
+					for(var p in data[i])
+						data[i][p]=animal[p];
+					return;
+				}
+			}
+		}
+		grid({
+			title:'动物信息列表',//必须有
+			data:data,			 //必须有
+			container:'con',     //必须有
+			key:'id',
+			delHandler:delAnimal,
+			addHandler:addAnimal,
+			updateHandler:updateAnimal,
+			fields:[
+				{name:'id',isKey:true},
+				{name:'name'},
+				{
+					name:'type',type:'select',
+					option:[
+						{text:'哺乳',value:'哺乳'},
+						{text:'爬行',value:'爬行'},
+						{text:'两栖',value:'两栖'}
+					]
+				},
+				{name:'weight'}
+			]
+		});
+	</script>
+</body>
+</html>
