@@ -1,13 +1,18 @@
 *{margin:0;padding:0;}
 ul{list-style:none;}
 html,body{width:100%;height:100%;}
-body{position:relative;}
+body{position:relative;margin:0 auto;
+	display:flex;justify-content:center; align-items:center;
+	background-image:url(bg.jpg);
+}
+#con{margin:10px auto;}
 table{
 	border-collapse: collapse;
 	box-shadow:5px 5px 15px 5px skyblue;
+	background-color: #e7eefe;
 }
 table td ,table th{
-	border:1px solid #0094ff;
+	border:1px solid #75e9f6;
 	padding:30px 50px;
 	font-size:20px;
 }
@@ -17,7 +22,7 @@ table tr:nth-child(even){
 }
 table caption{
 	height:40px;line-height:40px;
-	background:#0094ff;
+	background:#75e9f6;
 	color:#fff;
 	text-align: left;
 	font-size:20px;
@@ -30,6 +35,8 @@ table caption>a{
 	cursor:pointer;
 	text-decoration: none;
 }
+
+table caption>a:hover{color:#012059;}
 #overlay{
 	position:absolute;
 	top:0;left:0;
