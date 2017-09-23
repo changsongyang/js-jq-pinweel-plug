@@ -18,7 +18,7 @@ grid.createTr=function(obj){
 		td=document.createElement('td');
 		td.innerHTML='<a href="#" data-id="'
 			+obj[this.config.key]
-			+'" onclick="grid.del(this)">delete</a>';
+			+'" onclick="grid.del(this)" class="del">delete</a>';
 		tr.appendChild(td);
 	}
 	return tr;
