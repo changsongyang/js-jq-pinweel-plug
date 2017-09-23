@@ -5,6 +5,7 @@ function tag(name,father){
 }
 grid.createTr=function(obj){
 	var tr=document.createElement('tr'),td;
+	tr.className="add";
 	for(var p in obj){
 		td=document.createElement('td');
 		if(typeof this.config.updateHandler=='function'
