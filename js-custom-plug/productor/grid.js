@@ -146,8 +146,9 @@ grid.del=function(target){
 	this.config.delHandler(
 		target.getAttribute('data-id'));
 	var tr=target.parentNode.parentNode;
-	tr.className="del";//执行删除动画
-	setTimeout(function(){tr.parentNode.removeChild(tr);},600);
+	tr.className="del";
+	setTimeout(function(){tr.parentNode.removeChild(tr);})
+	
 };
 grid.save=function(target){
 	//搜集整理用户的输入信息,封装到obj对象
