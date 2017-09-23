@@ -37,21 +37,11 @@ table caption>a{
 }
 
 table caption>a:hover{color:#012059;}
-table tbody tr.add{
-	animation-name:add;
-}
 table tbody tr.del{
 	animation-name:del;
-}
-table tbody tr.del,table tbody tr.add{
 	animation-duration: 0.5s;
 	animation-fill-mode:forwards;
 	animation-timing-function: linear;
-}
-
-@keyframes add{
-	from {transform: translateX(-100%);opacity: 0}
-	to{transform: translateX(0%);opacity: 1;}
 }
 @keyframes del{
 	from {transform:translateX(0%);opacity: 1}
