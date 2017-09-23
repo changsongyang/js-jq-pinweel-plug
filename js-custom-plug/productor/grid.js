@@ -147,7 +147,7 @@ grid.del=function(target){
 		target.getAttribute('data-id'));
 	var tr=target.parentNode.parentNode;
 	tr.className="del";//执行删除动画
-	tr.parentNode.removeChild(tr);
+	setTimeout(function(){tr.parentNode.removeChild(tr);},600);
 };
 grid.save=function(target){
 	//搜集整理用户的输入信息,封装到obj对象
