@@ -6,7 +6,8 @@ function tag(name,father){
 grid.createTr=function(obj){
 	var tr=document.createElement('tr'),td;
 	tr.className="add";
-	for(var p in obj){
+	setTimeout(function(){
+		for(var p in obj){
 		td=document.createElement('td');
 		if(typeof this.config.updateHandler=='function'
 			&&p==this.config.key)
@@ -23,6 +24,7 @@ grid.createTr=function(obj){
 		tr.appendChild(td);
 	}
 	return tr;
+	},600);
 };
 grid.createCaption=function(){
 	var caption=document.createElement('caption');
