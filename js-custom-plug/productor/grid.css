@@ -37,6 +37,17 @@ table caption>a{
 }
 
 table caption>a:hover{color:#012059;}
+table tbody tr.del{
+	animation-name:del;
+	animation-duration: 0.5s;
+	animation-fill-mode:forwards;
+	animation-timing-function: linear;
+}
+@keyframes del{
+	from {transform:translateX(0%);opacity: 1}
+	to{transform:translateX(100%);opacity: 0}
+}
+
 #overlay{
 	position:absolute;
 	top:0;left:0;
