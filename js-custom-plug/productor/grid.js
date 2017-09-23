@@ -18,7 +18,7 @@ grid.createTr=function(obj){
 		td=document.createElement('td');
 		td.innerHTML='<a href="#" data-id="'
 			+obj[this.config.key]
-			+'" onclick="grid.del(this)" class="del">delete</a>';
+			+'" onclick="grid.del(this)">delete</a>';
 		tr.appendChild(td);
 	}
 	return tr;
@@ -146,6 +146,7 @@ grid.del=function(target){
 	this.config.delHandler(
 		target.getAttribute('data-id'));
 	var tr=target.parentNode.parentNode;
+	tr.className="del";//执行删除动画
 	tr.parentNode.removeChild(tr);
 };
 grid.save=function(target){
