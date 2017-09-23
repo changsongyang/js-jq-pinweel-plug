@@ -147,7 +147,7 @@ grid.del=function(target){
 		target.getAttribute('data-id'));
 	var tr=target.parentNode.parentNode;
 	tr.className="del";
-	setTimeout(function(){tr.parentNode.removeChild(tr);})
+	setTimeout(function(){tr.parentNode.removeChild(tr);},600);
 	
 };
 grid.save=function(target){
