@@ -6,15 +6,15 @@ function tag(name,father){
 grid.createTr=function(obj){
 	var tr=document.createElement('tr'),td;
 	tr.className="add";
-	setTimeout(function(){
-		for(var p in obj){
-		td=document.createElement('td');
-		if(typeof this.config.updateHandler=='function'
-			&&p==this.config.key)
-			td.innerHTML='<a href="#" onclick="grid.showDialog(this)">'+obj[p]+'</a>';
-		else
-			td.innerText=obj[p];
-		tr.appendChild(td);
+
+	for(var p in obj){
+	td=document.createElement('td');
+	if(typeof this.config.updateHandler=='function'
+		&&p==this.config.key)
+		td.innerHTML='<a href="#" onclick="grid.showDialog(this)">'+obj[p]+'</a>';
+	else
+		td.innerText=obj[p];
+	tr.appendChild(td);
 	}
 	if(typeof this.config.delHandler=='function'){
 		td=document.createElement('td');
@@ -24,7 +24,7 @@ grid.createTr=function(obj){
 		tr.appendChild(td);
 	}
 	return tr;
-	},600);
+
 };
 grid.createCaption=function(){
 	var caption=document.createElement('caption');
